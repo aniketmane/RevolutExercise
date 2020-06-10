@@ -41,9 +41,18 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
 
+    //Room
+    implementation "androidx.room:room-runtime:$rootProject.ext.room_version"
+    implementation "androidx.room:room-ktx:$rootProject.ext.room_version"
+    kapt "androidx.room:room-compiler:$rootProject.ext.room_version"
+
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofit"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp3_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp3_version"
 
     // Moshi
     implementation "com.squareup.moshi:moshi:$rootProject.ext.moshi_version"
@@ -58,10 +67,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-common:$rootProject.ext.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.ext.lifecycleVersion"
-
-    //LifeCycle
-    implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.ext.lifecycleVersion"
-    implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.lifecycleVersion"
 
 

@@ -50,6 +50,9 @@ ext {
     retrofit = '2.8.1'
     retrofitConverter = '2.8.1'
 
+    //OkHTTP
+    okhttp3_version = '4.6.0'
+
     //Moshi
     moshi_version = '1.9.2'
 
@@ -68,6 +71,8 @@ ext {
     junitExtVersion = '1.1.1'
     espressoVersion = '3.2.0'
     mockitoVersion = '2.15.0'
+
+    room_version = '2.2.5'
 }
 
 task clean(type: Delete) {
