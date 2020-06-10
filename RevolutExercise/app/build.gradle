@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.example.revolutexercise"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.aapCompat"
+    implementation "androidx.core:core-ktx:$rootProject.ext.kotlinExt"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofit"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:$rootProject.ext.moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.moshi_version"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide_version"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.glide_version"
+
+    //Lifecycle
+    implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifecycleExtensionVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common:$rootProject.ext.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.ext.lifecycleVersion"
+
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.ext.lifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$rootProject.ext.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.lifecycleVersion"
+
+
+    //Test
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.junitExtVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+}
