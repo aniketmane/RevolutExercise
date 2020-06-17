@@ -1,4 +1,4 @@
-package com.example.revolutexercise.data.model
+package com.example.revolutexercise.data.api.model
 
 data class Rates(
     val AUD: Double?,
