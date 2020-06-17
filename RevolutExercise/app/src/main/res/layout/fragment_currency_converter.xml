@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.example.revolutexercise.data.api.NetworkStatus" />
+
+        <variable
+            name="viewModel"
+            type="com.example.revolutexercise.ui.view.CurrencyConverterViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ratesListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/noInternetBottomLayout"
+            android:visibility="@{(viewModel.getNetworkStatus() == NetworkStatus.SUCCESS || viewModel.getNetworkStatus() == NetworkStatus.SUCCESS_WITHOUT_CONNECTION) ? View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_item_rates" />
+
+        <LinearLayout
+            android:id="@+id/errorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.getNetworkStatus() == NetworkStatus.ERROR ? View.VISIBLE : View.GONE}">
+
+
+            <TextView
+                style="@style/TextStyle.RobotoMedium.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cannot_load_rates"
+                android:textColor="@color/primary_grey_50" />
+
+            <TextView
+                style="@style/ClickableTextStyle.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:onClick="@{() -> viewModel.resumeJob()}"
+                android:text="@string/try_again" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.getNetworkStatus() == NetworkStatus.LOADING ? View.VISIBLE : View.GONE}" />
+
+
+        <LinearLayout
+            android:id="@+id/noInternetBottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/green_pastel"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.getNetworkStatus() == NetworkStatus.SUCCESS_WITHOUT_CONNECTION ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                style="@style/TextStyle.Roboto.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/standard_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/standard_margin"
+                android:text="@{viewModel.getErrorMessage()}"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                tools:text="Can't connect to the server." />
+
+            <TextView
+                style="@style/ClickableTextStyle.ExtraLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/extra_small_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:onClick="@{() -> viewModel.resumeJob()}"
+                android:text="@string/reload"
+                android:textColor="@color/selector_text_clickable" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>
