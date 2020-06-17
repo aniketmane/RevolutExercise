@@ -31,6 +31,15 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -40,6 +49,9 @@ dependencies {
     implementation "androidx.core:core-ktx:$rootProject.ext.kotlinExt"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.ext.fragmentKotlinExtn"
+    implementation "androidx.fragment:fragment:$rootProject.ext.fragmentExtn"
+    implementation "com.google.android.material:material:$rootProject.ext.materialVersion"
 
     //Room
     implementation "androidx.room:room-runtime:$rootProject.ext.room_version"
@@ -48,7 +60,8 @@ dependencies {
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.ext.retrofit"
+
 
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp3_version"
@@ -68,11 +81,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common:$rootProject.ext.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.ext.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.lifecycleVersion"
-
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.couroutine_ext"
 
     //Test
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.junitExtVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    testImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.ext.archExtn"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.ext.couroutine_ext"
 }
