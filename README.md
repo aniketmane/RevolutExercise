@@ -60,6 +60,7 @@ downloaded from [here](https://developer.android.com/studio/).
 Improvements 
 -----------------
 * Add Test Cases
+* Add Dependency Injection through Dagger or Koin or latest Hilt.
 
 Author
 ------------------------
