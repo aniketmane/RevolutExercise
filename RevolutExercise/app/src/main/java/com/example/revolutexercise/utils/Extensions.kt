@@ -4,7 +4,6 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.revolutexercise.data.api.repository.RevolutApiRepository
 import com.example.revolutexercise.data.local.RatesDatabaseHelper
-import com.example.revolutexercise.data.local.RevolutDatabase
 
 fun Fragment.getViewModelFactory(
     dbHelper: RatesDatabaseHelper,

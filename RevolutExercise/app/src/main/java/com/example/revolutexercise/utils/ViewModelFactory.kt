@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.revolutexercise.data.api.repository.RevolutApiRepository
 import com.example.revolutexercise.data.local.RatesDatabaseHelper
-import com.example.revolutexercise.data.local.dao.RatesDao
 import com.example.revolutexercise.ui.view.CurrencyConverterViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 

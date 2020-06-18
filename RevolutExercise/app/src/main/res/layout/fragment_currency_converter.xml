@@ -24,7 +24,6 @@
             android:id="@+id/ratesListRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/noInternetBottomLayout"
             android:visibility="@{(viewModel.getNetworkStatus() == NetworkStatus.SUCCESS || viewModel.getNetworkStatus() == NetworkStatus.SUCCESS_WITHOUT_CONNECTION) ? View.VISIBLE : View.GONE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_item_rates" />
@@ -62,41 +61,6 @@
             android:layout_centerInParent="true"
             android:visibility="@{viewModel.getNetworkStatus() == NetworkStatus.LOADING ? View.VISIBLE : View.GONE}" />
 
-
-        <LinearLayout
-            android:id="@+id/noInternetBottomLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:background="@color/green_pastel"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:visibility="@{viewModel.getNetworkStatus() == NetworkStatus.SUCCESS_WITHOUT_CONNECTION ? View.VISIBLE : View.GONE}">
-
-            <TextView
-                style="@style/TextStyle.Roboto.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/standard_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:layout_marginEnd="@dimen/standard_margin"
-                android:text="@{viewModel.getErrorMessage()}"
-                android:textAlignment="center"
-                android:textColor="@android:color/white"
-                tools:text="Can't connect to the server." />
-
-            <TextView
-                style="@style/ClickableTextStyle.ExtraLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/extra_small_margin"
-                android:layout_marginBottom="@dimen/small_margin"
-                android:onClick="@{() -> viewModel.resumeJob()}"
-                android:text="@string/reload"
-                android:textColor="@color/selector_text_clickable" />
-
-        </LinearLayout>
 
     </RelativeLayout>
 
